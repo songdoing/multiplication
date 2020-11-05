@@ -18,15 +18,15 @@
                  first : Math.ceil(Math.random() *9),
                  second : Math.ceil(Math.random() *9),
                  value : '',
-                 results : ''
-               };
+                 results : '',
+                };
            }
 
            onSubmit = (e) => {
                 e.preventDefault();
                 if(parseInt(this.state.value) === this.state.first * this.state.second) {
                     this.setState({
-                        results : 'You are right',
+                        results : (this.state.first) + ' X' + (this.state.second) + ' =' + (this.state.value) + '  You are right',
                         first : Math.ceil(Math.random()*9),
                         second : Math.ceil(Math.random()*9),
                         value:'',
