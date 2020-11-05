@@ -10,7 +10,8 @@
 <body>
    <div id="root"></div>
    <script type="text/babel"> //js안에서 html태그를 쓸수 있도록, jsx문법임
-        
+
+       const e = React.createElement; 
        class Multiplication extends React.Component {
            constructor(props) {
                super(props);
@@ -21,12 +22,13 @@
                  results : '',
                 };
            }
-
+          
            onSubmit = (e) => {
+                 
                 e.preventDefault();
                 if(parseInt(this.state.value) === this.state.first * this.state.second) {
                     this.setState({
-                        results : (this.state.first) + ' X' + (this.state.second) + ' =' + (this.state.value) + '  You are right',
+                        results : (this.state.first) + ' X ' + (this.state.second) + ' = ' + (this.state.value) + '  You are right',
                         first : Math.ceil(Math.random()*9),
                         second : Math.ceil(Math.random()*9),
                         value:'',
@@ -37,6 +39,7 @@
                         results : 'Try again',
                         value : '',
                     });
+                    this.input.focus();
                 }
            };
 
@@ -48,7 +51,13 @@
                if(e.key === 'Enter') {
                    this.onSubmit();
                }
-           }
+           };
+
+           onRefInput = (c) => {
+               this.input = c; 
+           };
+
+           input;
            
            render() {
               return (
@@ -56,7 +65,11 @@
                     <div>Hello, Mason!</div>
                     <div>{this.state.first} X {this.state.second} = ?</div>
                     <form onSubmit= {this.onSubmit}>
-                        <input type="number" value={this.state.value} onChange={this.onChange} onKeyPress ={this.handleKeyPress}/>
+                        <input type="number" value={this.state.value} 
+                            ref={this.onRefInput}
+                            onChange={this.onChange} 
+                            onKeyPress ={this.handleKeyPress}
+                        />
                         <button> ENTER </button>
                     </form>
                     <div>{this.state.results}</div>
