@@ -5,9 +5,26 @@
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <title>Multiplication</title>
+    <title>Multiplication-class</title>
 </head>
 <body>
+    <style>
+        #root {
+            border : 5px solid blue;
+            width: 500px;
+            height: 150px;
+            padding : 10px;
+            margin : 10px;
+        }
+        #name {
+            font-size: x-large;
+            font-weight: bolder;
+        }
+        #result {
+            color :blueviolet;
+            font-weight: bolder;
+        }
+    </style>
    <div id="root"></div>
    <script type="text/babel"> //js안에서 html태그를 쓸수 있도록, jsx문법임
 
@@ -62,7 +79,7 @@
            render() {
               return (
                 <div>
-                    <div>Hello, Mason!</div>
+                    <div id="name">Hello, Mason!</div>
                     <div>{this.state.first} X {this.state.second} = ?</div>
                     <form onSubmit= {this.onSubmit}>
                         <input type="number" value={this.state.value} 
@@ -72,7 +89,7 @@
                         />
                         <button> ENTER </button>
                     </form>
-                    <div>{this.state.results}</div>
+                    <div id="result">{this.state.results}</div>
                 </div>
               );
             }
