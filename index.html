@@ -2,102 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <title>Multiplication-class</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication</title>
 </head>
 <body>
-    <style>
-        #root {
-            border : 5px solid blue;
-            width: 500px;
-            height: 150px;
-            padding : 10px;
-            margin : 10px;
-        }
-        #name {
-            font-size: x-large;
-            font-weight: bolder;
-        }
-        #result {
-            color :blueviolet;
-            font-weight: bolder;
-        }
-    </style>
-   <div id="root"></div>
-   <script type="text/babel"> //js안에서 html태그를 쓸수 있도록, jsx문법임
-
-       const e = React.createElement; 
-       class Multiplication extends React.Component {
-           constructor(props) {
-               super(props);
-               this.state = {
-                 first : Math.ceil(Math.random() *9),
-                 second : Math.ceil(Math.random() *9),
-                 value : '',
-                 results : '',
-                };
-           }
-          
-           onSubmit = (e) => {
-                 
-                e.preventDefault();
-                if(parseInt(this.state.value) === this.state.first * this.state.second) {
-                    this.setState({
-                        results : (this.state.first) + ' X ' + (this.state.second) + ' = ' + (this.state.value) + '  You are right',
-                        first : Math.ceil(Math.random()*9),
-                        second : Math.ceil(Math.random()*9),
-                        value:'',
-                    });
-                    this.input.focus();
-                } else {
-                    this.setState({
-                        results : 'Try again',
-                        value : '',
-                    });
-                    this.input.focus();
-                }
-           };
-
-           onChange = (e) => {
-            this.setState({value:e.target.value});
-           };
-
-           handleKeyPress = (e) => {
-               if(e.key === 'Enter') {
-                   this.onSubmit();
-               }
-           };
-
-           onRefInput = (c) => {
-               this.input = c; 
-           };
-
-           input;
-           
-           render() {
-              return (
-                <div>
-                    <div id="name">Hello, Mason!</div>
-                    <div>{this.state.first} X {this.state.second} = ?</div>
-                    <form onSubmit= {this.onSubmit}>
-                        <input type="number" value={this.state.value} 
-                            ref={this.onRefInput}
-                            onChange={this.onChange} 
-                            onKeyPress ={this.handleKeyPress}
-                        />
-                        <button> ENTER </button>
-                    </form>
-                    <div id="result">{this.state.results}</div>
-                </div>
-              );
-            }
-       }
-    </script>
-    <script type="text/babel">
-        ReactDOM.render(<Multiplication />, document.querySelector('#root'));
-    </script>
-    
+    <div id="root"></div>
+    <script src="/dist/app.js"></script>
 </body>
 </html>
