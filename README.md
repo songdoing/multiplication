@@ -1,8 +1,8 @@
 # multiplication
-reactJS, babel
+react, react-dom, babel, webpack
 
 ## General Info
-This example is for Class component and function component.
+This example is for Class component and function component. And webpack.config.js is made from a scratch.
 
 ## Example
 
